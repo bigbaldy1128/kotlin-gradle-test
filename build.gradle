@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compile group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: '0.24.0'
 }
 
 compileKotlin {
@@ -26,5 +27,10 @@ jar {
     }
     from {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+kotlin {
+    experimental {
+        coroutines "enable"
     }
 }
